@@ -1,3 +1,4 @@
 {
-    "python.linting.pylintPath": "C:\\Users\\h_sgg\\Envs\\my_django_environment\\Scripts\\pylint"
+    "python.linting.pylintPath": "C:\\Users\\h_sgg\\Envs\\my_django_environment\\Scripts\\pylint",
+    "python.linting.pylintArgs": ["--load-plugins=pylint_django"]
 }

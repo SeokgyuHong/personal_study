@@ -6,6 +6,7 @@ from django.utils import timezone
 
 class Question(models.Model):
     #문자 필드 표현식
+    objects = models.Manager()
     question_text = models.CharField(max_length=200)
     #데이터 필드 표현
     pub_date = models.DateTimeField('date published')
