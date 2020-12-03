@@ -4,9 +4,12 @@ from . import views
 #polls에 있는 url을 메인 프로젝트 url.py에서 참조할수있게 해줘야함 
 app_name ='polls'
 urlpatterns = [
-    path('', views.index, name='index'),
-    #int:question_id = :question_id로 보내야한다. 해당값을
-    path('<int:question_id>/',views.detail,name='detail'),
-    path('<int:question_id>/results/', views.results,name='results'),
-    path('<int:question_id>/vote/',views.vote,name='vote'),
+    # ex: /polls/
+    path('',  views.IndexView.as_view(), name='index'),
+    # ex: /polls/5/
+    path('<int:pk>/',views.DetailView.as_view(), name='detail'),
+    # ex: /polls/5/results/
+    path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
+    # ex: /polls/5/vote/
+    path('<int:question_id>/vote/', views.vote, name='vote'),
 ]

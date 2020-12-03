@@ -14,10 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import include, path
 #polls/로 들어오는 url은 polls.urls로 처리하기로 함 
 #ex ) polls/34/로 들어올경우 polls/까지 여기서 처리하고 버린다음 34/뒤로 넘김
 urlpatterns = [
+    path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
-    path('polls/',include('polls.urls'))
 ]
