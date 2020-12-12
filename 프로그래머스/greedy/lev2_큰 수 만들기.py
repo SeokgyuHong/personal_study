@@ -1,98 +1,27 @@
-# def solution(number, k):
-#     max = 0
-#     start=0
-#     cnt=0
-#     answer=[]
-#     n = len(number)
-#     #number =list(number)
-       
-#     final = n-k #최종 도달해야하는 자릿수 
-#     check=0
-#     while(cnt!=final):
-#         max=0
-#         start=0
-#         for i in range(len(number)):
-#             if len(number)-i >=final-cnt: #자릿수보다 더 큰지 
-#                 if max< int(number[i]):
-#                     max=int(number[i])
-#                     start=i
-#             else:
-#                 break
-#         answer.append(number[start])
-#         #answer+=number[start]
+def solution(number,k):
+    answer =''
+    size = len(number)-k
+    print(size)
+    temp = size-1
+    start =0
 
-#         number =number[start+1:]
-#         check = start+1
-#         cnt+=1
-#     answer = "".join(answer)           
-#     return answer
-
-
-# def solution(number, k):
-#     max = 0
-#     start=0
-#     cnt=0
-#     answer=[]
-#     n = len(number)
-#     #number =list(number)
-       
-#     final = n-k #최종 도달해야하는 자릿수 
-#     check=0
-#     while(cnt!=final):
-#         max=0
-#         start=0
-#         for i in range(len(number)):
-#             if len(number)-i >=final-cnt: #자릿수보다 더 큰지 
-#                 if max< int(number[i]):
-#                     max=int(number[i])
-#                     start=i
-#             else:
-#                 break
-#         answer.append(number[start])
-#         #answer+=number[start]
-
-#         number =number[start+1:]
-#         check = start+1
-#         cnt+=1
-#     answer = "".join(answer)           
-#     return answer
-
-
-def solution(number, k):
-    answer=''
-    answer=[]
-    #final = n-k  #구해야하는자릿수 
-    cnt=0
-    temp=0
-    start=0
-    for i in range(len(number)):
-        if len(answer)==0:
-            answer.append(number[i])
-        else:
-            temp=0
-            flag = True
-            while(1):
-                if temp==len(answer):
-                    break
-                if len(answer)==0:
-                    break
-                if answer[temp]>=number[i]:
-                    temp+=1
-
-                elif answer[temp]<number[i]:
-                    answer.pop(temp)
-                    cnt+=1
-
-            answer.append(number[i])
-            start=i+1
-            if cnt==k:
-                break
-            
+    for i in range(0,size): #size만큼 반복
+        max =0
+        pos = 0
+        for j in range(start,len(number)-temp):
+            if int(number[j])>max:
+                max = int(number[j])
+                pos = j
+        answer+=number[pos]
+        temp-=1
+        start = pos+1
+                
             
         
-
-    answer = "".join(answer)           
+        
+        
     return answer
 
 
-solution("1231234",3)
+
+print(solution("1924",2))
