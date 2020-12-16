@@ -1,12 +1,40 @@
 from rest_framework import serializers
 from snippets.models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES
+from django.contrib.auth.models import User
 
 
-class SnippetSerializer(serializers.ModelSerializer):
+#S각 모델들에 대해 modelserializer대신 hyperlinkedmodelserializer를 사용한다.
+class SnippetSerializer(serializers.HyperlinkedModelSerializer):  # HyperlinkedModelSerializer
+    owner = serializers.ReadOnlyField(source='owner.username')  # owner field 추가
+    highlight = serializers.HyperlinkedIdentityField(view_name='snippet-highlight', format='html')  # hyperlinked
+
     class Meta:
         model = Snippet
-        fields = ['id','title','code','linenos','language','style']
+        fields = ['url', 'id', 'highlight', 'owner', 'title', 'code', 'linenos', 'language',
+                  'style']  # url, highlight 추가
 
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):  # HyperlinkedModelSerializer
+    snippets = serializers.HyperlinkedRelatedField(many=True, view_name='snippet-detail', read_only=True)  # hyperlinked
+
+    class Meta:
+        model = User
+        fields = ['url', 'id', 'username', 'snippets']  # url 추가
+
+# class SnippetSerializer(serializers.ModelSerializer):
+#     owner = serializers.ReadOnlyField(source='owner.username')
+#     class Meta:
+#         model = Snippet
+#
+#         fields = ['id', 'owner','title', 'code', 'linenos', 'language', 'style']
+#
+#
+# class UserSerializer(serializers.ModelSerializer):
+#     snippets = serializers.PrimaryKeyRelatedField(many=True, queryset=Snippet.objects.all())
+# #ModelSerializer를 상속받아도 snippets를 상속받은게 아니기때문에 명시적으로 필드 지정
+#     class Meta:
+#         model = User
+#         fields = ['id', 'username', 'snippets']
     # id = serializers.IntegerField(read_only=True)
     # title = serializers.CharField(required=False,allow_blank=True, max_length=100)
     # code = serializers.CharField(style={'base_template':'textarea.html'})

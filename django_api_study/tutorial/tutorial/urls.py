@@ -19,3 +19,7 @@ from django.urls import path, include
 urlpatterns = [
     path('', include('snippets.urls')),
 ]
+# user login
+urlpatterns += [
+    path('api-auth/', include('rest_framework.urls')),
+]
