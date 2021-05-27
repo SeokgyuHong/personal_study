@@ -3,3 +3,21 @@ django_personal_book_study/mysite/mysite/settings.py
 django_study/mysite/mysite/settings.py
 django_jwt_study/mysite/settings.py
 virtualEnv/
+
+
+jwt-tutorial/.gradle
+jwt-tutorial/build/
+jwt-tutorial/!gradle/wrapper/gradle-wrapper.jar
+jwt-tutorial/!**/src/main/**/build/
+jwt-tutorial/!**/src/test/**/build/
+jwt-tutorial/resources/application.yml
+
+
+### IntelliJ IDEA ###
+jwt-tutorial/.idea
+jwt-tutorial/*.iws
+jwt-tutorial/*.iml
+jwt-tutorial/*.ipr
+jwt-tutorial/out/
+jwt-tutorial/!**/src/main/**/out/
+jwt-tutorial/!**/src/test/**/out/
