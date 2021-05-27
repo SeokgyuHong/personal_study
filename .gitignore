@@ -5,7 +5,7 @@ django_jwt_study/mysite/settings.py
 virtualEnv/
 
 
-jwt-tutorial/.gradle
+jwt-tutorial/build.gradle
 jwt-tutorial/build/
 jwt-tutorial/!gradle/wrapper/gradle-wrapper.jar
 jwt-tutorial/!**/src/main/**/build/
