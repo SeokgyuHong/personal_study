@@ -1,0 +1,29 @@
+#스프링부트 설정을 지정하는곳
+#포트번호 변경
+server:
+  port: 8088
+
+logging:
+  level:
+    org.springframework: DEBUG
+    #org.springframework내용만 디버깅 모드로 출력하겠다는 의미
+
+
+#다국어파일 이름을 messages로 한다
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show-sql: true
+  messages:
+    basename: messages
+
+#actuator에서 더많은 상태를 확인할 수 있게 해준다
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
